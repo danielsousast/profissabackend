@@ -13,8 +13,8 @@ export class ProviderDocument extends AbstractDocument {
     @Prop()
     phone: string;
 
-    @Prop()
-    status: string;
+    @Prop({default: true})
+    active: boolean;
 
     @Prop()
     created_at: Date;
@@ -25,8 +25,8 @@ export class ProviderDocument extends AbstractDocument {
     @Prop()
     addresses: Types.ObjectId[];
 
-    @Prop()
-    category: Types.ObjectId;
+    @Prop({type: Types.ObjectId, ref: 'CategoryDocument'})
+    categories: Types.ObjectId[];
 }
 
 export const ProviderSchema = SchemaFactory.createForClass(ProviderDocument);

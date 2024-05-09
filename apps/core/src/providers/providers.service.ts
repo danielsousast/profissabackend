@@ -10,7 +10,8 @@ export class ProvidersService {
   create(createProviderDto: CreateProviderDto) {
     return this.providersRepository.create({
       ...createProviderDto,
-      status: 'active',
+      active: false,
+      categories: []
     });
   }
 
