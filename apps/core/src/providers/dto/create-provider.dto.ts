@@ -6,4 +6,5 @@ export class CreateProviderDto {
     updated_at: Date;
     addresses: any[];
     category: any;
+    authId: string
 }

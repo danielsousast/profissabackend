@@ -22,11 +22,17 @@ export class ProviderDocument extends AbstractDocument {
     @Prop()
     updated_at: Date;
 
-    @Prop()
+    @Prop({type: Types.ObjectId, ref: 'AdressDocument'})
     addresses: Types.ObjectId[];
 
     @Prop({type: Types.ObjectId, ref: 'CategoryDocument'})
     categories: Types.ObjectId[];
+
+    @Prop({type: Types.ObjectId, ref: 'ContactsDocument'})
+    contacts: Types.ObjectId[];
+
+    @Prop({type: Types.ObjectId, ref: 'RatingsDocument'})
+    ratings: Types.ObjectId[];
 }
 
 export const ProviderSchema = SchemaFactory.createForClass(ProviderDocument);
