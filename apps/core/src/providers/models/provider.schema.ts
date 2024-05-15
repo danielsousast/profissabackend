@@ -4,17 +4,14 @@ import { Types } from "mongoose";
 
 @Schema({versionKey: false})
 export class ProviderDocument extends AbstractDocument {
-    @Prop()
+    @Prop({required: true})
     name: string;
-
-    @Prop()
-    email: string;
-
-    @Prop()
-    phone: string;
 
     @Prop({default: true})
     active: boolean;
+
+    @Prop({required: true})
+    user_id: string;
 
     @Prop()
     created_at: Date;
@@ -22,14 +19,8 @@ export class ProviderDocument extends AbstractDocument {
     @Prop()
     updated_at: Date;
 
-    @Prop({type: Types.ObjectId, ref: 'AdressDocument'})
-    addresses: Types.ObjectId[];
-
-    @Prop({type: Types.ObjectId, ref: 'CategoryDocument'})
-    categories: Types.ObjectId[];
-
-    @Prop({type: Types.ObjectId, ref: 'ContactsDocument'})
-    contacts: Types.ObjectId[];
+    @Prop({type: Types.ObjectId, ref: 'ServicesDocument', required: true})
+    services: Types.ObjectId[];
 
     @Prop({type: Types.ObjectId, ref: 'RatingsDocument'})
     ratings: Types.ObjectId[];

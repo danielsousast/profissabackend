@@ -1,10 +1,17 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { ContactDto } from './contact.dto';
+import { AddressDto } from './address.dto';
+
 export class CreateProviderDto {
+    @ApiProperty()
     name: string;
-    email: string;
-    phone: string;
-    created_at: Date;
-    updated_at: Date;
-    addresses: any[];
-    category: any;
-    authId: string
+    @ApiProperty()
+    services: any[];
+    @ApiProperty()
+    userId: string
+    @ApiProperty({ type: [ContactDto] })
+    contacts: ContactDto[];
+    @ApiProperty({ type: [AddressDto] })
+    adresses: AddressDto[];
 }
+

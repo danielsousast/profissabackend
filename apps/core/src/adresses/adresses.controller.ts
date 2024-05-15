@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { AdressesService } from './adresses.service';
 import { CreateAdressDto } from './dto/create-adress.dto';
 import { UpdateAdressDto } from './dto/update-adress.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('adresses')
+@ApiTags('Adresses')
 export class AdressesController {
   constructor(private readonly adressesService: AdressesService) {}
 
@@ -19,16 +21,16 @@ export class AdressesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.adressesService.findOne(+id);
+    return this.adressesService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAdressDto: UpdateAdressDto) {
-    return this.adressesService.update(+id, updateAdressDto);
+    return this.adressesService.update(id, updateAdressDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.adressesService.remove(+id);
+    return this.adressesService.remove(id);
   }
 }

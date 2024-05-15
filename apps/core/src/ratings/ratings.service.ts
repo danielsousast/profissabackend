@@ -17,11 +17,11 @@ export class RatingsService {
     return this.ratingsRepository.find({});
   }
 
-  findOne(_id: number) {
+  findOne(_id: string) {
     return this.ratingsRepository.findOne({ _id}) 
   }
 
-  update(_id: number, updateRatingDto: UpdateRatingDto) {
+  update(_id: string, updateRatingDto: UpdateRatingDto) {
     return this.ratingsRepository.findOneAndUpdate({
       _id,
     }, {
@@ -29,7 +29,7 @@ export class RatingsService {
     });
   }
 
-  remove(_id: number) {
+  remove(_id: string) {
     return this.ratingsRepository.findOneAndDelete({_id});
   }
 }

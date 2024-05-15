@@ -21,7 +21,7 @@ export class ServicesService {
     return this.serviceRepository.findOne({_id});
   }
 
-  update(_id: number, updateServiceDto: UpdateServiceDto) {
+  update(_id: string, updateServiceDto: UpdateServiceDto) {
     return this.serviceRepository.findOneAndUpdate({
       _id,
     }, {

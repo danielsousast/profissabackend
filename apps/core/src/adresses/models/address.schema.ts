@@ -1,5 +1,6 @@
 import { AbstractDocument } from "@app/common/database/abstract.schema";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Types } from "mongoose";
 
 @Schema({versionKey: false})
 export class AddressDocument extends AbstractDocument {
@@ -20,6 +21,9 @@ export class AddressDocument extends AbstractDocument {
 
     @Prop()
     state: string;
+
+    @Prop({type: Types.ObjectId, ref: 'ProviderDocument'})
+    provider_id: Types.ObjectId;
 
     @Prop()
     default: boolean;

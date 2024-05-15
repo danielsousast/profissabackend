@@ -21,7 +21,7 @@ export class AdressesService {
     return this.adressesRepository.findOne({_id});
   }
 
-  update(_id: number, updateServiceDto: UpdateAdressDto) {
+  update(_id: string, updateServiceDto: UpdateAdressDto) {
     return this.adressesRepository.findOneAndUpdate({
       _id,
     }, {

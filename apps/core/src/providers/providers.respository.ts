@@ -13,4 +13,8 @@ export class ProvidersRepository extends AbstractRepository<ProviderDocument> {
     ) {
         super(providerModel);
     }
+
+    findByServiceId(serviceId: string) {
+        return this.model.find({ services: serviceId }).exec();
+    }
 }
