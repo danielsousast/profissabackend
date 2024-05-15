@@ -31,15 +31,15 @@ export class ProvidersService {
       provider_id: provider._id
     }))
 
-    
-    for(const contact of contacts){
+
+    for (const contact of contacts) {
       this.contactsService.create(contact);
     }
 
-    for(const adress of adresses){
+    for (const adress of adresses) {
       this.adressesService.create(adress);
     }
-   
+
     return provider;
   }
 
@@ -47,8 +47,18 @@ export class ProvidersService {
     return this.providersRepository.find({});
   }
 
-  findOne(_id: string) {
-    return this.providersRepository.findOne({ _id });
+  async findOne(_id: string) {
+    const [provider, contacts, adresses] = await Promise.all([
+      this.providersRepository.findOne({ _id }),
+      this.contactsService.findByProvider(_id),
+      this.adressesService.findByProvider(_id)
+    ]);
+
+    return {
+      ...provider,
+      contacts,
+      adresses
+    }
   }
 
   update(id: string, updateProviderDto: UpdateProviderDto) {

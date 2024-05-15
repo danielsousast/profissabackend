@@ -11,6 +11,8 @@ import { AdressesRepository } from '../adresses/adresses.respository';
 import { AddressDocument, AddressSchema } from '../adresses/models/address.schema';
 import { ContactDocument, ContactSchema } from '../contacts/models/contact.model';
 
+console.log(ProviderDocument.name)
+
 @Module({
   imports:[DatabaseModule,DatabaseModule.forFeature([{
     name: ProviderDocument.name,

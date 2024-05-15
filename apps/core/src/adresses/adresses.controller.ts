@@ -33,4 +33,9 @@ export class AdressesController {
   remove(@Param('id') id: string) {
     return this.adressesService.remove(id);
   }
+
+  @Get('provider/:provider_id')
+  findByProvider(@Param('provider_id') provider_id: string) {
+    return this.adressesService.findByProvider(provider_id);
+  }
 }

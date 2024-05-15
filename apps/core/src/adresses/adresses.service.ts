@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateAdressDto } from './dto/create-adress.dto';
 import { UpdateAdressDto } from './dto/update-adress.dto';
 import { AdressesRepository } from './adresses.respository';
+import { Types } from 'mongoose';
+import { convertToValidObjectId } from '../utils/mongoose';
 
 @Injectable()
 export class AdressesService {
@@ -32,4 +34,11 @@ export class AdressesService {
   remove(_id: string) {
     return this.adressesRepository.findOneAndDelete({_id});
   }
+
+  async findByProvider(provider_id: string) {
+    const objectId = convertToValidObjectId(provider_id);
+    return await this.adressesRepository.find({ provider_id: objectId });
+  }
 }
+
+

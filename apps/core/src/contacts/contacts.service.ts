@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { ContactsRepository } from './contacts.respository';
+import { convertToValidObjectId } from '../utils/mongoose';
 
 @Injectable()
 export class ContactsService {
@@ -30,5 +31,10 @@ export class ContactsService {
 
   remove(_id: string) {
     return this.contactRepository.findOneAndDelete({_id});
+  }
+
+  findByProvider(provider_id: string) {
+    const objectId = convertToValidObjectId(provider_id);
+    return this.contactRepository.find({ provider_id:objectId });
   }
 }
